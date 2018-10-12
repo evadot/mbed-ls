@@ -52,6 +52,9 @@ def create(**kwargs):
         elif mbed_os == 'Darwin':
             from .darwin import MbedLsToolsDarwin
             result = MbedLsToolsDarwin(**kwargs)
+        elif mbed_os == 'FreeBSD':
+            from .freebsd import MbedLsToolsFreeBSD
+            result = MbedLsToolsFreeBSD(**kwargs)
     return result
 
 
@@ -70,6 +73,8 @@ def mbed_os_support():
         result = 'LinuxGeneric'
     elif (os_info[0] == 'posix' and os_info[1] == 'Darwin'):
         result = 'Darwin'
+    elif (os_info[0] == 'posix' and os_info[1] == 'FreeBSD'):
+        result = 'FreeBSD'
     return result
 
 
